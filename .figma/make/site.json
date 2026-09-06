@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a premium sneaker catalog allowing users to explore styles and easily contact Fresh.co via WhatsApp for price and availability inquiries.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
