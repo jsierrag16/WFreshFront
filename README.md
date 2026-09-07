@@ -1,6 +1,6 @@
 # WearFresh Frontend
 
-Frontend del catálogo público de Fresh.co.
+Frontend del catálogo público y panel administrativo de Fresh.
 
 ## Stack
 
@@ -8,11 +8,12 @@ Frontend del catálogo público de Fresh.co.
 - TypeScript
 - Vite 8
 - Tailwind CSS 4
+- React Router 8
 - pnpm
 
 ## Requisitos
 
-- Node.js 20.19+ (recomendado: Node 22)
+- Node.js 20.19+ (recomendado Node 22)
 - pnpm 10.34.3
 
 ## Desarrollo
@@ -22,34 +23,49 @@ pnpm install
 pnpm dev
 ```
 
-La aplicación se sirve en `http://localhost:8443`.
+La aplicación se sirve por defecto en `http://localhost:8443`.
 
-## Verificaciones
+## Validación
 
 ```bash
 pnpm typecheck
 pnpm build
 ```
 
-## Estructura actual
+## Rutas actuales
+
+### Público
+
+- `/` — landing actual con hero + catálogo
+- `/catalogo` — catálogo sin hero
+
+### Administración
+
+- `/admin/login` — acceso administrativo (autenticación pendiente)
+- `/admin` — dashboard
+- `/admin/productos` — gestión de productos
+- `/admin/productos/nuevo` — creación de producto
+- `/admin/productos/:productId/editar` — edición de producto
+- `/admin/categorias` — gestión de categorías
+
+## Arquitectura
 
 ```text
 src/
-├── assets/
-│   └── images/
+├── app/
+│   ├── layouts/
+│   └── router/
 ├── features/
+│   ├── admin/
 │   └── catalog/
-│       ├── components/
-│       ├── data/
-│       └── types/
 ├── shared/
 │   ├── components/
-│   │   └── icons/
 │   ├── config/
+│   ├── pages/
 │   └── utils/
+├── assets/
 ├── App.tsx
-├── index.css
 └── main.tsx
 ```
 
-Esta versión mantiene el diseño y comportamiento del catálogo original, pero elimina la infraestructura específica de Figma Make y separa responsabilidades para continuar creciendo por funcionalidades.
+La aplicación se mantiene intencionalmente simple: solo se crean capas/carpetas cuando tienen una responsabilidad real. La próxima evolución será desacoplar los datos locales del catálogo mediante una capa de servicios preparada para consumir la API.
